@@ -1,0 +1,1 @@
+import{Q as t}from"./QPage-JKQtUaCM.js";import{I as a,J as s,K as r,W as o}from"./index-BdCKe3--.js";import"./render-sFFOolgd.js";const f={__name:"HomePage",setup(m){return(p,e)=>(s(),a(t,{class:"flex flex-center"},{default:r(()=>e[0]||(e[0]=[o("div",{class:"text-grey-1 text-h5"},"This is the homepage.",-1)])),_:1}))}};export{f as default};
