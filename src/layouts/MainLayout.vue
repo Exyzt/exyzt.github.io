@@ -1,40 +1,50 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
+  <q-layout view="lHr Lpr lFr">
     <q-header elevated>
-      <q-toolbar>
+      <q-toolbar class="bg-grey-5">
+        <q-toolbar-title v-if="$q.screen.lt.sm" class="text-h5 text-dark q-pa-md q-mx-md q-my-s">
+          <router-link to="/" style="text-decoration: none; color: inherit"> Exyzt </router-link>
+          <span v-if="currentPageTitle && $route.path !== '/'"> - {{ currentPageTitle }} </span>
+        </q-toolbar-title>
+
+        <q-toolbar-title v-else class="text-h4 text-dark q-pa-md q-mx-md q-my-s">
+          <router-link to="/" style="text-decoration: none; color: inherit"> Exyzt </router-link>
+          <span v-if="currentPageTitle && $route.path !== '/'"> - {{ currentPageTitle }} </span>
+        </q-toolbar-title>
+
         <q-btn
           flat
           dense
           round
+          color="black"
           icon="menu"
           aria-label="Menu"
-          @click="toggleLeftDrawer"
+          size="xl"
+          class="q-pa-md q-mx-md q-my-s"
+          @click="toggleRightDrawer"
         />
-
-        <q-toolbar-title>
-          Quasar App
-        </q-toolbar-title>
-
-        <div>Quasar v{{ $q.version }}</div>
       </q-toolbar>
     </q-header>
 
-    <q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
-      bordered
-    >
+    <q-drawer v-model="rightDrawerOpen" class="bg-grey-5" show-if-above side="right" bordered>
       <q-list>
-        <q-item-label
-          header
-        >
-          Essential Links
+        <q-item-label header class="text-h4 text-grey-8 q-pl-sm q-pl-sm q-pr-xs">
+          <q-icon name="room" size="lg" /> Navigation
         </q-item-label>
 
         <EssentialLink
           v-for="link in linksList"
           :key="link.title"
           v-bind="link"
+          class="text-h5"
+          :style="{
+            opacity: linkHover === link.title || $route.path === link.link ? '1' : '0.4',
+            color: linkHover === link.title ? 'black' : 'inherit',
+            transition: 'all 0.3 ease',
+          }"
+          @mouseover="linkHover = link.title"
+          @mouseleave="linkHover = null"
+          @link-clicked="rightDrawerOpen = false"
         />
       </q-list>
     </q-drawer>
@@ -46,57 +56,43 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
+import { useRoute } from 'vue-router'
 import EssentialLink from 'components/EssentialLink.vue'
 
 const linksList = [
   {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
+    title: 'Home',
+    icon: 'home',
+    link: '/',
   },
   {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
+    title: 'Projects',
     icon: 'code',
-    link: 'https://github.com/quasarframework'
+    link: '/projects',
   },
   {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
+    title: 'Notes',
+    icon: 'book',
+    link: '/notes',
+  },
+  {
+    title: 'Blog',
     icon: 'chat',
-    link: 'https://chat.quasar.dev'
+    link: '/blog',
   },
-  {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
-  },
-  {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
-  },
-  {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
-  },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
-  }
 ]
 
-const leftDrawerOpen = ref(false)
+const route = useRoute()
+const rightDrawerOpen = ref(false)
+const linkHover = ref(null)
 
-function toggleLeftDrawer () {
-  leftDrawerOpen.value = !leftDrawerOpen.value
+const currentPageTitle = computed(() => {
+  const currentLink = linksList.find((link) => link.link === route.path)
+  return currentLink?.title || ''
+})
+
+function toggleRightDrawer() {
+  rightDrawerOpen.value = !rightDrawerOpen.value
 }
 </script>
