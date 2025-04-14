@@ -1,1 +1,0 @@
-import{Q as t}from"./QPage-B8gClTru.js";import{I as s,J as a,K as r,W as o}from"./index-L8f6yj69.js";import"./render-oYBGlasl.js";const c={__name:"HomePage",setup(i){return(l,e)=>(a(),s(t,{class:"flex flex-center"},{default:r(()=>e[0]||(e[0]=[o("div",{class:"text-grey-1 text-h5"},"This is the homepage and it is still under development.",-1)])),_:1}))}};export{c as default};

@@ -1,1 +1,0 @@
-import{Q as t}from"./QPage-B8gClTru.js";import{I as s,J as a,K as r,W as o}from"./index-L8f6yj69.js";import"./render-oYBGlasl.js";const m={__name:"ProjectsPage",setup(c){return(p,e)=>(a(),s(t,{class:"flex flex-center"},{default:r(()=>e[0]||(e[0]=[o("div",{class:"text-h5 text-grey-1"},"This is the projects page.",-1)])),_:1}))}};export{m as default};
