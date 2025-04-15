@@ -1,0 +1,1 @@
+import{Q as t}from"./QPage-C1RgfV9w.js";import{I as s,J as a,K as r,W as o}from"./index-BY7lHXPF.js";import"./render-CnzDapE4.js";const n={__name:"NotesPage",setup(m){return(p,e)=>(a(),s(t,{class:"flex flex-center q-mx-sm"},{default:r(()=>e[0]||(e[0]=[o("div",{class:"text-h5 text-grey-1"},"This is the notes page.",-1)])),_:1}))}};export{n as default};
