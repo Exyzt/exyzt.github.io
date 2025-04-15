@@ -1,0 +1,1 @@
+import{Q as a}from"./QPage-Cr9zC3Fp.js";import{I as s,J as r,K as o,W as t}from"./index-B2p4swCO.js";import"./render-VzEDLTvp.js";const m={__name:"HomePage",setup(l){return(n,e)=>(r(),s(a,{class:"flex flex-center",padding:""},{default:o(()=>e[0]||(e[0]=[t("div",{class:"text-grey-1 text-h5"},[t("h4",null,"Just Casually Exyzting.")],-1)])),_:1}))}};export{m as default};
