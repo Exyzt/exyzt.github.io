@@ -1,9 +1,14 @@
 // app global css in SCSS form
-body {
+html,
+body,
+#q-app {
   font-family:
     'Titillium Web',
     -apple-system,
     sans-serif;
   background-color: black;
   color: $dark;
+  height: 100%;
+  margin: 0;
+  overflow-x: hidden;
 }
